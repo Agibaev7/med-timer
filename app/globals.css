@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+:root {
+  --bg: #f4f6fb;
+  --fg: #0f172a;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f19;
+    --fg: #e5e7eb;
+  }
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+button {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.pt-safe { padding-top: max(env(safe-area-inset-top), 12px); }
+.pb-safe { padding-bottom: max(env(safe-area-inset-bottom), 12px); }
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(244 63 94 / 0.45); }
+  70% { box-shadow: 0 0 0 14px rgb(244 63 94 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(244 63 94 / 0); }
+}
+.animate-due { animation: pulse-ring 1.6s ease-out infinite; }
